@@ -1,5 +1,6 @@
 ﻿using Country.List.Interest.Rate.Net6.API.Model;
 using HtmlAgilityPack;
+using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
@@ -68,8 +69,8 @@ namespace Country.List.Interest.Rate.Net6.API.Utility
 
                 InterestRateModel InterestRateModel = new InterestRateModel();
                 InterestRateModel.Country = lstInterest[3].Trim();
-                InterestRateModel.Last = Convert.ToDouble(lstInterest[5].Trim());
-                InterestRateModel.Previous = Convert.ToDouble(lstInterest[6].Trim());
+                InterestRateModel.Last = lstInterest[5].Trim();
+                InterestRateModel.Previous = lstInterest[6].Trim();
                 InterestRateModel.Reference = lstInterest[7].Trim();
                 InterestRateModel.Unit = lstInterest[8].Trim();
                 rstModel.Add(InterestRateModel);

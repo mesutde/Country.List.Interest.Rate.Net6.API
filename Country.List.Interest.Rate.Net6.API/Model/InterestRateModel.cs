@@ -3,8 +3,8 @@
     public class InterestRateModel
     {
         public string Country { get; set; }
-        public double Last { get; set; }
-        public double Previous { get; set; }
+        public string Last { get; set; }
+        public string Previous { get; set; }
         public String Reference { get; set; }
         public String Unit { get; set; }
     }
