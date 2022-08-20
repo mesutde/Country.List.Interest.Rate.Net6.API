@@ -9,11 +9,29 @@ namespace Country.List.Interest.Rate.Net6.API.Controllers
     public class InterestRateController : ControllerBase
     {
         [HttpGet(Name = "GetCountryInterestRate")]
-        public IEnumerable<InterestRateModel> Get()
+        public Response<InterestRateModel> Get()
         {
             List<InterestRateModel> GetCountryInterestRate = Helper.getInterestRate();
 
-            return GetCountryInterestRate;
+            Response<InterestRateModel> retVal = new Response<InterestRateModel>();
+
+            if (GetCountryInterestRate != null)
+            {
+                retVal.Result = true;
+                retVal.ResultCode = 200;
+                retVal.Message = "İşlem Başarılı";
+                retVal.Comment = GetCountryInterestRate.Count() + " Ülke Bulundu";
+                retVal.Data = GetCountryInterestRate;
+            }
+
+            return retVal;
         }
+
+        //public IEnumerable<InterestRateModel> Get()
+        //{
+        //    List<InterestRateModel> GetCountryInterestRate = Helper.getInterestRate();
+
+        //    return GetCountryInterestRate;
+        //}
     }
 }

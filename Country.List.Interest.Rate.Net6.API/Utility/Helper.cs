@@ -1,6 +1,5 @@
 ﻿using Country.List.Interest.Rate.Net6.API.Model;
 using HtmlAgilityPack;
-using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
