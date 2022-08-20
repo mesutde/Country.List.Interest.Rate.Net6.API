@@ -8,6 +8,8 @@
 
         public string Comment { get; set; }
 
+        public string UpdateTime { get; set; }
+
         public IEnumerable<T> Data { get; set; }
 
         public Response()

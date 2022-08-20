@@ -1,6 +1,7 @@
 ﻿using Country.List.Interest.Rate.Net6.API.Model;
 using Country.List.Interest.Rate.Net6.API.Utility;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace Country.List.Interest.Rate.Net6.API.Controllers
 {
@@ -17,11 +18,13 @@ namespace Country.List.Interest.Rate.Net6.API.Controllers
 
             if (GetCountryInterestRate != null)
             {
+             
                 retVal.Result = true;
                 retVal.ResultCode = 200;
                 retVal.Message = "İşlem Başarılı";
                 retVal.Comment = GetCountryInterestRate.Count() + " Ülke Bulundu";
                 retVal.Data = GetCountryInterestRate;
+                retVal.UpdateTime = DateTime.Now.ToString();
             }
             else
             {
