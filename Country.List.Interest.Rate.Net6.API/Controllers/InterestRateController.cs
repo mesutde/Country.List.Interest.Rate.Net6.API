@@ -23,15 +23,15 @@ namespace Country.List.Interest.Rate.Net6.API.Controllers
                 retVal.Comment = GetCountryInterestRate.Count() + " Ülke Bulundu";
                 retVal.Data = GetCountryInterestRate;
             }
+            else
+            {
+                retVal.Result = false;
+                retVal.ResultCode = -1;
+                retVal.Message = "Hata";
+                retVal.Comment = "Veriye Ulaşılamadı.";
+            }
 
             return retVal;
         }
-
-        //public IEnumerable<InterestRateModel> Get()
-        //{
-        //    List<InterestRateModel> GetCountryInterestRate = Helper.getInterestRate();
-
-        //    return GetCountryInterestRate;
-        //}
     }
 }

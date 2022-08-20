@@ -10,7 +10,17 @@ namespace Country.List.Interest.Rate.Net6.API.Utility
         public static string getHtmlSourceAgility(string link)
         {
             HtmlWeb webSite = new HtmlWeb();
-            HtmlAgilityPack.HtmlDocument doc = webSite.Load(link);
+            HtmlAgilityPack.HtmlDocument doc;
+
+            try
+            {
+                doc = webSite.Load(link);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
             return doc.DocumentNode.OuterHtml;
         }
 
@@ -48,6 +58,8 @@ namespace Country.List.Interest.Rate.Net6.API.Utility
                 htmlCode = getHtmlSourceAgility(Url);
             }
 
+            if (htmlCode == null) return null;
+
             HtmlAgilityPack.HtmlDocument dokuman = new HtmlAgilityPack.HtmlDocument();
             dokuman.LoadHtml(htmlCode);
             HtmlNodeCollection basliklar = dokuman.DocumentNode.SelectNodes(Nodes);
@@ -58,6 +70,8 @@ namespace Country.List.Interest.Rate.Net6.API.Utility
         {
             HtmlNodeCollection interestrate = Helper.GetNodesToResult("https://tradingeconomics.com/country-list/interest-rate", ".//tr[@class='datatable-row-alternating']");
             List<InterestRateModel> rstModel = new List<InterestRateModel>();
+
+            if (interestrate == null) return null;
 
             foreach (var item in interestrate)
             {
